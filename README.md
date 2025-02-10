@@ -1,79 +1,66 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# site
+- https://reactnative.dev
+- https://github.com/Microsoft/react-native-macos
 
-# Getting Started
+- cocoapods
+- https://zeddios.tistory.com/25
+- https://cocoapods.org/
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
-
-## Step 1: Start the Metro Server
-
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
-
-To start Metro, run the following command from the _root_ of your React Native project:
-
+# 실행
 ```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
+# 두개의 창에서 
+cd ~/src/react/rnFirestore
+npx react-native start 
+npx react-native run-macos
+watchman watch-list
 ```
 
-## Step 2: Start your Application
+# xcode
+``` bash
+cd ~/src/react/rnFirestore/macos
+open rnFirestore.xcworkspace 
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+# 배포 빌드
+Product -> Archive
+# 빌드된 app 추출
+Window->Organizer
+Distribute app -> custom ->  copy app
+# 설정: 실행, 빌드, 아카이브
+Product -> Scheme -> Edit Scheme
 ```
 
-### For iOS
-
+# 프로젝트 생성
 ```bash
-# using npm
-npm run ios
+npm view react-native@0.75.x version
+npx @react-native-community/cli init rnFirestore --version 0.75.5
+cd rnFirestore
+npx react-native-macos-init
+# 0.75.5은 아래 작업필요 없음
+cd macos
+pod install
+```
+참고 0.76 버젼을 설치하니 TextInput에서 crash 발생
 
-# OR using Yarn
-yarn ios
+
+# 파일변경 감지
+```bash
+brew install watchman
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+# Package Manager
+ruby -v 이 3.1 이상이 아니면
+```bash
+brew install ruby
+brew --prefix ruby
+echo 'export PATH=/opt/homebrew/opt/ruby/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+cocoapods
+```bash
+sudo gem install cocoapods
+sudo gem update --system 3.6.3
+pod --version
+1.16.2
+```
 
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
